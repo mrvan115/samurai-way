@@ -12,7 +12,11 @@
     "classnames": "2.3.1",
     "formik": "2.2.9",
     "gh-pages": "3.2.3",
+    "globally": "^0.0.0",
+    "install": "^0.13.0",
+    "it": "^1.1.1",
     "jest": "27.5.1",
+    "prettier": "^3.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.6",
@@ -35,12 +39,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -62,5 +60,14 @@
     "@types/react-test-renderer": "17.0.1",
     "@types/redux-form": "8.3.3",
     "@types/uuid": "8.3.4"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "arrowParens": "always",
+    "semi": false,
+    "trailingComma": "none",
+    "useTabs": true
   }
 }
