@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styles from './Profile.module.css'
+import { MyPosts } from './MyPosts/MyPosts'
 
 type ProfilePropsType = {}
 
@@ -12,7 +13,7 @@ export const Profile: FC<ProfilePropsType> = (props) => {
 					alt=''
 				/>
 			</div>
-			<div></div>
+			<MyPosts />
 		</div>
 	)
 }
