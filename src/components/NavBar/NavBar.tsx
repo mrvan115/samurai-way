@@ -1,24 +1,38 @@
 import React, { FC } from 'react'
-import styles from './NavBar.module.css'
+import s from './NavBar.module.css'
+import { NavLink } from 'react-router-dom'
 
 type NavBarPropsType = {}
 
+const navLinkCssClasses = (isActive: boolean) => (isActive ? s.active : s.item)
+
 export const NavBar: FC<NavBarPropsType> = (props) => {
 	return (
-		<nav className={styles.nav}>
+		<nav className={s.nav}>
 			<div>
-				<a href='#' className={`${styles.item} ${styles.active}`}>
+				<NavLink className={navLinkCssClasses} to='/profile'>
+					Profile
+				</NavLink>
+			</div>
+			<div>
+				<NavLink className={navLinkCssClasses} to='/dialogs'>
 					Messages
-				</a>
+				</NavLink>
 			</div>
 			<div>
-				<a href='#'>News</a>
+				<NavLink className={navLinkCssClasses} to='/news'>
+					News
+				</NavLink>
 			</div>
 			<div>
-				<a href='#'>Music</a>
+				<NavLink className={navLinkCssClasses} to='/music'>
+					Music
+				</NavLink>
 			</div>
 			<div>
-				<a href='#'>Settings</a>
+				<NavLink className={navLinkCssClasses} to='/settings'>
+					Settings
+				</NavLink>
 			</div>
 		</nav>
 	)

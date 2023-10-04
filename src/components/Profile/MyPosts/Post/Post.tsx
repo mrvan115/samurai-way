@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import styles from './Post.module.css'
 
-type PostPropsType = {}
+type PostPropsType = {
+	message: string
+}
 
 export const Post: FC<PostPropsType> = (props) => {
 	return (
@@ -10,7 +12,10 @@ export const Post: FC<PostPropsType> = (props) => {
 				src='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg'
 				alt=''
 			/>
-			post 1
+			{props.message}
+			<div>
+				<span>Like!</span>
+			</div>
 		</div>
 	)
 }
