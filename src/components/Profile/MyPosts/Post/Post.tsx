@@ -3,6 +3,7 @@ import styles from './Post.module.css'
 
 type PostPropsType = {
 	message: string
+	likesCount: string
 }
 
 export const Post: FC<PostPropsType> = (props) => {
@@ -15,6 +16,7 @@ export const Post: FC<PostPropsType> = (props) => {
 			{props.message}
 			<div>
 				<span>Like!</span>
+				<span> {props.likesCount}</span>
 			</div>
 		</div>
 	)
