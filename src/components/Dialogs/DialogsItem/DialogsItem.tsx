@@ -5,7 +5,7 @@ import { navLinkCssClasses } from '../Dialogs'
 
 type DialogItemPropsType = {
 	name: string
-	id: string
+	id: number
 }
 
 export const DialogItem: FC<DialogItemPropsType> = (props) => {

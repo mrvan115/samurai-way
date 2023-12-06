@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import s from './Dialogs.module.css'
 import { DialogItem } from './DialogsItem/DialogsItem'
 import { Message } from './Message/Message'
-import { MessagesPageType } from '../redux/state'
+import { MessagesPageType } from '../../redux/state'
 
 type DialogsPropsType = {
 	state: MessagesPageType

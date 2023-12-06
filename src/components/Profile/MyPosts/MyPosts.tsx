@@ -1,31 +1,30 @@
-import React, { FC } from 'react'
+import React, { FC, useRef } from 'react'
 import s from './MyPosts.module.css'
 import { Post } from './Post/Post'
-import { ProfilePageType } from '../../redux/state'
+import { ProfilePageType } from '../../../redux/state'
 
 type MyPostsPropsType = {
 	state: ProfilePageType
 }
 
 export const MyPosts: FC<MyPostsPropsType> = (props) => {
-	// const postData = [
-	// 	{ id: '1', message: 'Hi, how are you?', likesCount: '1' },
-	// 	{ id: '2', message: "It's my first post", likesCount: '23' },
-	// 	{ id: '3', message: 'how are you?', likesCount: '15' },
-	// 	{ id: '4', message: 'Hi', likesCount: '17' },
-	// 	{ id: '5', message: "Hi, how are you? It's my first post", likesCount: '6' }
-	// ]
+	let newPostEl = useRef<HTMLTextAreaElement>(null)
+
+	const addPostHandler = () => {
+		if (newPostEl.current !== null) {
+			alert(newPostEl.current.value)
+		}
+	}
 
 	return (
 		<div className={s.postsBlock}>
 			<h3>My posts</h3>
 			<div>
 				<div>
-					<textarea></textarea>
+					<textarea ref={newPostEl}></textarea>
 				</div>
 				<div>
-					<button>Add Post</button>
-					<button>Remove</button>
+					<button onClick={addPostHandler}>Add Post</button>
 				</div>
 			</div>
 			<div className={s.posts}>

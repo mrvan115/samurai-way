@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css'
 import { Header } from './components/Header/Header'
@@ -8,13 +8,13 @@ import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Music } from './components/Music/Music'
 import { Settings } from './components/Settings/Settings'
-import { StateType } from './components/redux/state'
+import { StateType } from './redux/state'
 
 type AppPropsType = {
 	state: StateType
 }
 
-function App(props: AppPropsType) {
+const App: FC<AppPropsType> = (props) => {
 	return (
 		<BrowserRouter>
 			<div className='app-wrapper'>
