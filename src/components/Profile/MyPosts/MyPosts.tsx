@@ -5,6 +5,7 @@ import { ProfilePageType } from '../../../redux/state'
 
 type MyPostsPropsType = {
 	state: ProfilePageType
+	addPost: (postMessage: string) => void
 }
 
 export const MyPosts: FC<MyPostsPropsType> = (props) => {
@@ -12,7 +13,7 @@ export const MyPosts: FC<MyPostsPropsType> = (props) => {
 
 	const addPostHandler = () => {
 		if (newPostEl.current !== null) {
-			alert(newPostEl.current.value)
+			props.addPost(newPostEl.current.value)
 		}
 	}
 

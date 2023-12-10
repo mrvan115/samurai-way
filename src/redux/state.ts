@@ -62,3 +62,8 @@ export const state: StateType = {
 	sidebar: {}
 }
 //-FUNCTIONS------------------------------------------------------------------------------------------------------------
+
+export const addPost = (postMessage: string) => {
+	let newPost: PostDataType = { id: 6, message: postMessage, likesCount: 0 }
+	state.profilePage.postData.push(newPost)
+}
