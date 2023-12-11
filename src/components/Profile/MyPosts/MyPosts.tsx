@@ -14,6 +14,7 @@ export const MyPosts: FC<MyPostsPropsType> = (props) => {
 	const addPostHandler = () => {
 		if (newPostEl.current !== null) {
 			props.addPost(newPostEl.current.value)
+			newPostEl.current.value = ''
 		}
 	}
 
