@@ -9,6 +9,7 @@ export type StateType = {
 
 export type ProfilePageType = {
 	postData: PostDataType[]
+	newPostText: NewPostTextType
 }
 export type MessagesPageType = {
 	dataDialogs: DataDialogsType[]
@@ -21,6 +22,9 @@ export type PostDataType = {
 	message: string
 	likesCount: number
 }
+
+export type NewPostTextType = string
+
 export type DataDialogsType = {
 	id: number
 	name: string
@@ -43,7 +47,8 @@ export const state: StateType = {
 				message: "Hi, how are you? It's my first post",
 				likesCount: 6
 			}
-		]
+		],
+		newPostText: 'it-kamasutra'
 	},
 	messagesPage: {
 		dataDialogs: [
@@ -65,8 +70,18 @@ export const state: StateType = {
 }
 //-FUNCTIONS------------------------------------------------------------------------------------------------------------
 
-export const addPost = (postMessage: string) => {
-	let newPost: PostDataType = { id: 6, message: postMessage, likesCount: 0 }
+export const addPost = () => {
+	let newPost: PostDataType = {
+		id: Math.random(),
+		message: state.profilePage.newPostText,
+		likesCount: 0
+	}
 	state.profilePage.postData.push(newPost)
+	state.profilePage.newPostText = ''
+	rerenderEntireTree(state)
+}
+
+export const updateNewPostText = (newText: NewPostTextType) => {
+	state.profilePage.newPostText = newText
 	rerenderEntireTree(state)
 }

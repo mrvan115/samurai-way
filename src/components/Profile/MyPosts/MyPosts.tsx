@@ -1,11 +1,13 @@
 import React, { FC, useRef } from 'react'
 import s from './MyPosts.module.css'
 import { Post } from './Post/Post'
-import { ProfilePageType } from '../../../redux/state'
+import { NewPostTextType, ProfilePageType } from '../../../redux/state'
 
 type MyPostsPropsType = {
 	state: ProfilePageType
-	addPost: (postMessage: string) => void
+	addPost: () => void
+	newPostText: NewPostTextType
+	updateNewPostText: (newText: NewPostTextType) => void
 }
 
 export const MyPosts: FC<MyPostsPropsType> = (props) => {
@@ -13,8 +15,14 @@ export const MyPosts: FC<MyPostsPropsType> = (props) => {
 
 	const addPostHandler = () => {
 		if (newPostEl.current !== null) {
-			props.addPost(newPostEl.current.value)
-			newPostEl.current.value = ''
+			props.addPost()
+		}
+	}
+
+	const onPostChange = () => {
+		if (newPostEl.current !== null) {
+			let text = newPostEl.current.value
+			props.updateNewPostText(text)
 		}
 	}
 
@@ -23,7 +31,11 @@ export const MyPosts: FC<MyPostsPropsType> = (props) => {
 			<h3>My posts</h3>
 			<div>
 				<div>
-					<textarea ref={newPostEl}></textarea>
+					<textarea
+						onChange={onPostChange}
+						ref={newPostEl}
+						value={props.newPostText}
+					/>
 				</div>
 				<div>
 					<button onClick={addPostHandler}>Add Post</button>

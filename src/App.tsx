@@ -8,11 +8,12 @@ import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Music } from './components/Music/Music'
 import { Settings } from './components/Settings/Settings'
-import { StateType } from './redux/state'
+import { NewPostTextType, StateType, updateNewPostText } from './redux/state'
 
 type AppPropsType = {
 	state: StateType
-	addPost: (postMessage: string) => void
+	addPost: () => void
+	updateNewPostText: (newText: NewPostTextType) => void
 }
 
 const App: FC<AppPropsType> = (props) => {
@@ -24,7 +25,12 @@ const App: FC<AppPropsType> = (props) => {
 				<Route
 					path='/profile'
 					render={() => (
-						<Profile state={props.state.profilePage} addPost={props.addPost} />
+						<Profile
+							state={props.state.profilePage}
+							addPost={props.addPost}
+							newPostText={props.state.profilePage.newPostText}
+							updateNewPostText={props.updateNewPostText}
+						/>
 					)}
 				/>
 				<Route
