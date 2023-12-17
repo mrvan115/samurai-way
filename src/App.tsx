@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import './App.css'
 import { Header } from './components/Header/Header'
 import { NavBar } from './components/NavBar/NavBar'
@@ -8,15 +8,17 @@ import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Music } from './components/Music/Music'
 import { Settings } from './components/Settings/Settings'
-import { NewPostTextType, StateType, updateNewPostText } from './redux/state'
+import { NewPostTextType, StoreType } from './redux/state'
 
 type AppPropsType = {
-	state: StateType
+	store: StoreType
 	addPost: () => void
 	updateNewPostText: (newText: NewPostTextType) => void
 }
 
 const App: FC<AppPropsType> = (props) => {
+	const state = props.store.getState()
+
 	return (
 		<div className='app-wrapper'>
 			<Header />
@@ -26,16 +28,16 @@ const App: FC<AppPropsType> = (props) => {
 					path='/profile'
 					render={() => (
 						<Profile
-							state={props.state.profilePage}
+							state={state.profilePage}
 							addPost={props.addPost}
-							newPostText={props.state.profilePage.newPostText}
+							newPostText={state.profilePage.newPostText}
 							updateNewPostText={props.updateNewPostText}
 						/>
 					)}
 				/>
 				<Route
 					path='/dialogs'
-					render={() => <Dialogs state={props.state.messagesPage} />}
+					render={() => <Dialogs state={state.messagesPage} />}
 				/>
 				<Route path='/news' render={() => <News />} />
 				<Route path='/music' render={() => <Music />} />
